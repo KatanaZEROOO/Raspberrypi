@@ -8,7 +8,6 @@ GPIO.setup(21, GPIO.IN)
 GPIO.setup(20, GPIO.IN)
 GPIO.setup(16, GPIO.IN)
 
-#123
 udp_host = '192.168.30.101'
 udp_port = 50007
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
