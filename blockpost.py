@@ -28,7 +28,6 @@ def handle_button1(channel):
     else:
         send_command(b'\xaa\xa1\x00\x05Stop_U\x95=y\xc1\x1c\xb4\x04\xca\xb4\xfe')
         print('Stopping')
-    time.sleep(COMMAND_DELAY)
 
 def handle_button2(channel):
     if GPIO.input(BUTTON2) == GPIO.LOW:
@@ -37,7 +36,6 @@ def handle_button2(channel):
     else:
         send_command(b'\xaa\xa1\x00\x05Stop_U\x95=y\xc1\x1c\xb4\x04\xca\xb4\xfe')
         print('Stopping')
-    time.sleep(COMMAND_DELAY)
 
 
 GPIO.add_event_detect(BUTTON1, GPIO.BOTH, callback=handle_button1, bouncetime=300)
