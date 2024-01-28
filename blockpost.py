@@ -11,7 +11,7 @@ GPIO.setup(16, GPIO.IN)
 udp_host = '192.168.30.101'
 udp_port = 50007
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
+COMMAND_DELAY = 0.3
 def send_command(command):
     udp_socket.sendto(command, (udp_host, udp_port))
 
@@ -28,6 +28,7 @@ def handle_button1(channel):
     else:
         send_command(b'\xaa\xa1\x00\x05Stop_U\x95=y\xc1\x1c\xb4\x04\xca\xb4\xfe')
         print('Stopping')
+    time.sleep(COMMAND_DELAY)
 
 def handle_button2(channel):
     if GPIO.input(BUTTON2) == GPIO.LOW:
@@ -36,12 +37,12 @@ def handle_button2(channel):
     else:
         send_command(b'\xaa\xa1\x00\x05Stop_U\x95=y\xc1\x1c\xb4\x04\xca\xb4\xfe')
         print('Stopping')
+    time.sleep(COMMAND_DELAY)
 
 
 GPIO.add_event_detect(BUTTON1, GPIO.BOTH, callback=handle_button1, bouncetime=300)
 GPIO.add_event_detect(BUTTON2, GPIO.BOTH, callback=handle_button2, bouncetime=300)
 
-COMMAND_DELAY = 0.3
 
 
 previous_state = "NEUTRAL"
