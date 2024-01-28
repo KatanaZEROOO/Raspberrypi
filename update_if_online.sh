@@ -17,6 +17,7 @@ FILE_NAME="blockpost.py"
         echo "Internet is available, updating file $FILE_NAME..."
         git fetch
         git checkout origin/main -- "$FILE_NAME"
+        chmod +x "$FILE_NAME"
     else
         echo "Internet is not available."
     fi
